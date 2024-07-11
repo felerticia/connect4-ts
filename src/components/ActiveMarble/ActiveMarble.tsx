@@ -16,7 +16,7 @@ const ActiveMarble = ({
   setTurn,
 }: ActiveMarbleProps) => {
   const [column, setColumn] = useState(0);
-  const [row, setRow] = useState(0);
+  const [row, setRow] = useState(-1);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -37,6 +37,7 @@ const ActiveMarble = ({
         setTimeout(() => {
           setDropped([...dropped, { x: len, y: column, player: turn }]);
           setTurn(turn === 1 ? 2 : 1);
+          setRow(-1);
         }, 500);
       }
     };
@@ -46,9 +47,10 @@ const ActiveMarble = ({
 
   return (
     <div
-      className={`p${turn}`}
+      className={`p${turn} ${row === -1 ? "not-dropped" : ""}`}
       style={{
-        marginLeft: column * 100 + "px",
+        marginLeft: column * size + "px",
+        transform: `translateY(${row === -1 ? 0 : 150 + row * size}px)`,
       }}
     ></div>
   );
