@@ -21,7 +21,12 @@ const DropZone = () => {
           }}
         ></div>
       ))}
-      <ActiveMarble turn={turn} />
+      <ActiveMarble
+        turn={turn}
+        dropped={dropped}
+        setDropped={setDropped}
+        setTurn={setTurn}
+      />
     </div>
   );
 };
