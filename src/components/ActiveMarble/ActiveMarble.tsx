@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { cols, size } from "../../constants/constants";
-import { Dropped } from "../DropZone/type";
+import { Dropped, PlayerNumber } from "../../types";
 
 type ActiveMarbleProps = {
-  turn: number;
+  turn: PlayerNumber;
   dropped: Dropped[];
   setDropped: (dropped: Dropped[]) => void;
-  setTurn: (turn: number) => void;
+  setTurn: (turn: PlayerNumber) => void;
 };
 
 const ActiveMarble = ({
